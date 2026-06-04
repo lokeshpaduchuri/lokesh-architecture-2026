@@ -9,8 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "format": "prettier --write \"src/**/*.{ts,html,css}\" \"docs/**/*.md\"",
-    "deploy": "npm run build && aws s3 sync dist/lokesh-architecture-2026/browser s3://YOUR_BUCKET_NAME --delete && aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths '/*'"
+    "format": "prettier --write \"src/**/*.{ts,html,css}\" \"docs/**/*.md\""
   },
   "dependencies": {
     "@angular/animations": "^20.2.0",
