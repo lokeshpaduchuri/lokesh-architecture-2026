@@ -1,0 +1,62 @@
+<section appReveal class="relative overflow-hidden py-12 sm:py-16 lg:py-20">
+  <div class="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+    <div class="space-y-6">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">{{ profile.eyebrow }}</p>
+      <h1 class="max-w-4xl text-[clamp(2.375rem,10vw,2.75rem)] font-semibold leading-tight text-slate-950 sm:text-5xl lg:text-6xl dark:text-slate-50">{{ profile.headline }}</h1>
+      <p class="max-w-3xl text-lg leading-8 text-slate-600 dark:text-slate-300">I design and lead enterprise frontend systems with a focus on platform scale, governance, and delivery velocity.</p>
+      <div class="flex flex-wrap gap-3">
+        <a class="inline-flex rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-lime-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:text-slate-950 dark:hover:bg-lime-300" routerLink="/contact">Start a conversation</a>
+        <a class="inline-flex rounded-full border border-slate-300 px-5 py-2.5 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-accent dark:border-slate-700" routerLink="/work">Explore my work</a>
+      </div>
+    </div>
+
+    <div class="relative min-h-72 rounded-lg border border-slate-200 bg-white/70 p-6 dark:border-slate-800 dark:bg-slate-900/70" aria-hidden="true">
+      <div class="absolute left-8 right-8 top-1/2 h-px bg-lime-500/25"></div>
+      <div class="absolute bottom-10 left-1/2 top-10 w-px bg-lime-500/20"></div>
+      <div class="grid h-full min-h-60 grid-cols-2 gap-5">
+        <div class="rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
+          <span class="block h-2 w-16 rounded-full bg-lime-400/70"></span>
+          <span class="mt-10 block h-2 w-24 rounded-full bg-slate-300 dark:bg-slate-700"></span>
+        </div>
+        <div class="mt-8 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
+          <span class="block h-2 w-20 rounded-full bg-slate-300 dark:bg-slate-700"></span>
+          <span class="mt-10 block h-2 w-14 rounded-full bg-lime-400/70"></span>
+        </div>
+        <div class="ml-8 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
+          <span class="block h-2 w-12 rounded-full bg-lime-400/70"></span>
+          <span class="mt-10 block h-2 w-20 rounded-full bg-slate-300 dark:bg-slate-700"></span>
+        </div>
+        <div class="rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60">
+          <span class="block h-2 w-24 rounded-full bg-slate-300 dark:bg-slate-700"></span>
+          <span class="mt-10 block h-2 w-16 rounded-full bg-lime-400/70"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="mt-10 grid gap-3 rounded-lg border border-slate-200 bg-white p-4 sm:grid-cols-2 lg:grid-cols-4 dark:border-slate-800 dark:bg-slate-900">
+    <li class="text-sm font-medium text-slate-700 dark:text-slate-200" *ngFor="let point of proofPoints">{{ point }}</li>
+  </ul>
+</section>
+
+<section appReveal class="py-8">
+  <h2 class="text-[clamp(1.75rem,7vw,2rem)] font-semibold sm:text-2xl">Approach</h2>
+  <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+    <li class="rounded-lg border border-slate-200 bg-white p-5 text-sm font-medium transition hover:-translate-y-1 hover:border-accent/60 dark:border-slate-800 dark:bg-slate-900" *ngFor="let item of strengths">{{ item }}</li>
+  </ul>
+</section>
+
+<section appReveal class="py-10">
+  <div class="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <h2 class="text-[clamp(1.75rem,7vw,2rem)] font-semibold sm:text-2xl">Featured Work</h2>
+      <p class="mt-2 max-w-3xl text-slate-600 dark:text-slate-300">Selected initiatives that improved platform consistency, delivery quality, and engineering velocity.</p>
+    </div>
+    <a routerLink="/work" class="text-sm font-semibold text-accent hover:text-lime-300">View all work</a>
+  </div>
+  <div class="grid gap-4 md:grid-cols-3">
+    <app-project-card *ngFor="let project of featured" [project]="project" (open)="openProject($event)" />
+  </div>
+</section>
+
+<app-project-modal *ngIf="selectedProject" [project]="selectedProject" (modalClose)="closeProject()" />

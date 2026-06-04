@@ -1,0 +1,33 @@
+<section class="py-10 sm:py-14">
+  <p class="text-sm font-semibold uppercase tracking-[0.2em] text-accent">SELECTED WORK</p>
+  <h1 class="mt-3 text-[clamp(2.375rem,10vw,2.75rem)] font-semibold leading-tight text-slate-950 sm:text-4xl dark:text-slate-50">Architecture case studies</h1>
+  <p class="mt-3 max-w-3xl text-slate-600 dark:text-slate-300">
+    Public-safe briefs for platform modernization, governance, performance, design systems, and responsible AI-assisted engineering.
+  </p>
+
+  <div class="mobile-filter-row mt-6 flex gap-2 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0" aria-label="Filter case studies">
+    <button
+      type="button"
+      (click)="activeTag = 'All'"
+      class="min-h-11 shrink-0 rounded-full border border-slate-300 px-4 py-2 text-sm transition hover:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-slate-700"
+      [ngClass]="activeTag==='All' ? 'bg-accent text-white dark:text-slate-950' : ''"
+    >
+      All
+    </button>
+    <button
+      type="button"
+      *ngFor="let tag of tags"
+      (click)="activeTag = tag"
+      class="min-h-11 shrink-0 rounded-full border border-slate-300 px-4 py-2 text-sm transition hover:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-slate-700"
+      [ngClass]="activeTag===tag ? 'bg-accent text-white dark:text-slate-950' : ''"
+    >
+      {{ tag }}
+    </button>
+  </div>
+
+  <div class="mt-7 grid gap-4 md:grid-cols-2">
+    <app-project-card *ngFor="let project of filteredProjects" [project]="project" (open)="openProject($event)" />
+  </div>
+</section>
+
+<app-project-modal *ngIf="selectedProject" [project]="selectedProject" (modalClose)="closeProject()" />

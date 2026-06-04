@@ -1,0 +1,53 @@
+<header
+  class="no-print sticky top-0 z-30 border-b border-slate-200/80 bg-slate-50/95 backdrop-blur dark:border-slate-800 dark:bg-[#020617]/95"
+>
+  <nav class="relative mx-auto max-w-6xl px-4 py-3">
+    <div class="flex items-center justify-between gap-3">
+      <a routerLink="/" (click)="closeMenu()" class="text-sm font-semibold tracking-wide sm:text-base"
+        >Lokesh Paduchuri</a
+      >
+
+      <div class="hidden items-center gap-4 text-sm md:flex">
+        <a routerLink="/work" routerLinkActive="font-semibold text-accent">Work</a>
+        <a routerLink="/resume" routerLinkActive="font-semibold text-accent">Resume</a>
+        <a routerLink="/about" routerLinkActive="font-semibold text-accent">About</a>
+        <a routerLink="/contact" routerLinkActive="font-semibold text-accent">Contact</a>
+        <app-theme-toggle />
+      </div>
+
+      <button
+        type="button"
+        class="inline-flex min-h-11 items-center rounded-md border border-slate-300 px-3 py-2 text-sm font-medium transition hover:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent md:hidden dark:border-slate-700"
+        [attr.aria-expanded]="menuOpen"
+        aria-controls="mobile-menu"
+        [attr.aria-label]="menuOpen ? 'Close navigation menu' : 'Open navigation menu'"
+        (click)="toggleMenu()"
+      >
+        {{ menuOpen ? 'Close' : 'Menu' }}
+      </button>
+    </div>
+
+    <button
+      type="button"
+      class="mobile-menu-backdrop fixed inset-0 top-[57px] z-30 bg-slate-950/25 md:hidden dark:bg-slate-950/45"
+      aria-label="Close navigation menu"
+      *ngIf="menuOpen"
+      (click)="closeMenu()"
+    ></button>
+
+    <div
+      #mobileMenu
+      id="mobile-menu"
+      class="mobile-menu-panel absolute left-4 right-4 top-[calc(100%+0.5rem)] z-40 rounded-lg border border-slate-200 bg-white p-2 shadow-xl shadow-slate-950/10 md:hidden dark:border-slate-800 dark:bg-slate-900 dark:shadow-black/30"
+      *ngIf="menuOpen"
+    >
+      <a routerLink="/work" routerLinkActive="font-semibold text-accent" class="block min-h-11 rounded-md px-3 py-2.5 text-sm" (click)="closeMenu()">Work</a>
+      <a routerLink="/resume" routerLinkActive="font-semibold text-accent" class="block min-h-11 rounded-md px-3 py-2.5 text-sm" (click)="closeMenu()">Resume</a>
+      <a routerLink="/about" routerLinkActive="font-semibold text-accent" class="block min-h-11 rounded-md px-3 py-2.5 text-sm" (click)="closeMenu()">About</a>
+      <a routerLink="/contact" routerLinkActive="font-semibold text-accent" class="block min-h-11 rounded-md px-3 py-2.5 text-sm" (click)="closeMenu()">Contact</a>
+      <div class="border-t border-slate-200 px-3 pt-2 dark:border-slate-800">
+        <app-theme-toggle />
+      </div>
+    </div>
+  </nav>
+</header>
