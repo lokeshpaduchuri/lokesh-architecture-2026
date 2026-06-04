@@ -21,7 +21,7 @@ import { Project } from '../models/resume.models';
 })
 export class ProjectModalComponent implements AfterViewInit {
   @Input({ required: true }) project!: Project;
-  @Output() close = new EventEmitter<void>();
+  @Output() modalClose = new EventEmitter<void>();
   @ViewChild('dialog') dialogRef?: ElementRef<HTMLElement>;
   imageIndex = 0;
 
@@ -31,7 +31,7 @@ export class ProjectModalComponent implements AfterViewInit {
 
   @HostListener('document:keydown.escape')
   onEscape(): void {
-    this.close.emit();
+    this.modalClose.emit();
   }
 
   @HostListener('document:keydown.tab', ['$event'])
@@ -55,7 +55,7 @@ export class ProjectModalComponent implements AfterViewInit {
 
   closeOnOverlay(event: MouseEvent): void {
     if (event.target === event.currentTarget) {
-      this.close.emit();
+      this.modalClose.emit();
     }
   }
 
@@ -65,5 +65,9 @@ export class ProjectModalComponent implements AfterViewInit {
 
   nextImage(): void {
     this.imageIndex = (this.imageIndex + 1) % this.project.screenshots.length;
+  }
+
+  copyLink(): void {
+    void navigator.clipboard?.writeText(window.location.href);
   }
 }

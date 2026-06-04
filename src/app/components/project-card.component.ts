@@ -12,4 +12,11 @@ import { Project } from '../models/resume.models';
 export class ProjectCardComponent {
   @Input({ required: true }) project!: Project;
   @Output() open = new EventEmitter<Project>();
+
+  openFromKeyboard(event: KeyboardEvent): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.open.emit(this.project);
+    }
+  }
 }

@@ -1,9 +1,8 @@
     <button
-      class="rounded-full border border-slate-300 px-3 py-1.5 text-sm font-medium transition hover:-translate-y-0.5 hover:shadow dark:border-slate-700"
+      class="min-h-11 rounded-full border border-slate-300 px-3 py-2 text-sm font-medium transition hover:-translate-y-0.5 hover:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent dark:border-slate-700"
       type="button"
       [attr.aria-label]="'Switch to ' + (theme.mode() === 'dark' ? 'light' : 'dark') + ' mode'"
       (click)="theme.toggleTheme()"
     >
-      {{ theme.mode() === 'dark' ? '🌙 Dark' : '☀️ Light' }}
+      {{ theme.mode() === 'dark' ? 'Dark' : 'Light' }}
     </button>
-  

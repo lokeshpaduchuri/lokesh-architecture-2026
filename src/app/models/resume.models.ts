@@ -1,29 +1,43 @@
 export interface LinkItem {
   label: string;
   url: string;
+  public?: boolean;
 }
 
 export interface Project {
   slug: string;
   title: string;
-  year: number;
-  company: string;
+  shortTitle: string;
+  yearLabel: string;
   domain: string;
+  category: string;
   summary: string;
-  role: string;
+  architectureProblem: string;
+  challenge: string[];
+  architectureDecision: string[];
+  leadershipApproach: string[];
   outcomes: string[];
-  tech: string[];
+  measurableImpact?: string;
+  technologies: string[];
   screenshots: string[];
   links: LinkItem[];
+  diagrams?: string[];
   featured?: boolean;
+  displayOrder: number;
+  confidentialityNote?: string;
 }
 
 export interface Experience {
   title: string;
-  company: string;
+  publicCompanyName: string;
+  anonymizedCompanyName: string;
+  usePublicCompanyName: boolean;
   period: string;
   location: string;
+  publicSafeSummary?: string;
   highlights: string[];
+  technologies: string[];
+  current?: boolean;
 }
 
 export interface Education {
@@ -35,4 +49,30 @@ export interface Education {
 export interface SkillGroup {
   category: string;
   items: string[];
+}
+
+export interface Profile {
+  name: string;
+  primaryTitle: string;
+  shortTitle: string;
+  eyebrow: string;
+  headline: string;
+  summary: string;
+  location: string;
+  email: string;
+  emailIsPublic: boolean;
+  linkedin: string;
+  github: string;
+  siteUrl: string;
+}
+
+export interface AboutContent {
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  supportingParagraph: string;
+  principles: Array<{ title: string; body: string }>;
+  process: string[];
+  ai: string;
+  beyondCode: string;
 }

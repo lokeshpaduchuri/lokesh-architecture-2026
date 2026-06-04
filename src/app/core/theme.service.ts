@@ -7,12 +7,11 @@ export type ThemeMode = 'light' | 'dark';
 export class ThemeService {
   private readonly document = inject(DOCUMENT);
   private readonly storageKey = 'lokesh-theme';
-  readonly mode = signal<ThemeMode>('light');
+  readonly mode = signal<ThemeMode>('dark');
 
   initTheme(): void {
     const saved = localStorage.getItem(this.storageKey) as ThemeMode | null;
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const resolved: ThemeMode = saved ?? (systemDark ? 'dark' : 'light');
+    const resolved: ThemeMode = saved ?? 'dark';
     this.applyTheme(resolved);
   }
 
