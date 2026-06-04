@@ -1,0 +1,24 @@
+    <article class="prose prose-slate max-w-none py-10 dark:prose-invert">
+      <h1>{{ profile.name }}</h1>
+      <p>{{ profile.headline }} · {{ profile.location }}</p>
+      <p>{{ profile.summary }}</p>
+
+      <h2>Experience</h2>
+      <section *ngFor="let role of experience" class="mb-5">
+        <h3>{{ role.title }} · {{ role.company }}</h3>
+        <p>{{ role.period }} · {{ role.location }}</p>
+        <ul>
+          <li *ngFor="let point of role.highlights">{{ point }}</li>
+        </ul>
+      </section>
+
+      <h2>Skills</h2>
+      <section *ngFor="let group of skills" class="mb-4">
+        <h3>{{ group.category }}</h3>
+        <p>{{ group.items.join(' · ') }}</p>
+      </section>
+
+      <h2>Education</h2>
+      <p *ngFor="let edu of education">{{ edu.degree }} · {{ edu.institution }} ({{ edu.period }})</p>
+    </article>
+  

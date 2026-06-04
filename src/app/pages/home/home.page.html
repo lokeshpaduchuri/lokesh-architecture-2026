@@ -1,0 +1,24 @@
+    <section appReveal class="space-y-6 py-10">
+      <p class="text-sm uppercase tracking-[0.2em] text-slate-500">{{ profile.headline }}</p>
+      <h1 class="max-w-4xl text-4xl font-semibold leading-tight sm:text-5xl">I build frontend architecture that scales teams, systems, and delivery outcomes.</h1>
+      <p class="max-w-3xl text-lg text-slate-600 dark:text-slate-300">{{ profile.summary }}</p>
+      <a class="inline-flex rounded-full bg-accent px-5 py-2 text-sm font-medium text-white" routerLink="/contact">Start a conversation</a>
+    </section>
+
+    <section appReveal class="py-8">
+      <h2 class="text-2xl font-semibold">Approach</h2>
+      <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+        <li class="rounded-xl border border-slate-200 p-4 dark:border-slate-800" *ngFor="let item of strengths">{{ item }}</li>
+      </ul>
+    </section>
+
+    <section appReveal class="py-8">
+      <div class="mb-4 flex items-center justify-between">
+        <h2 class="text-2xl font-semibold">Featured Work</h2>
+        <a routerLink="/work" class="text-sm text-accent">View all</a>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <app-project-card *ngFor="let project of featured" [project]="project" />
+      </div>
+    </section>
+  

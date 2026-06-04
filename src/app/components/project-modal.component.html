@@ -1,0 +1,27 @@
+    <div class="fixed inset-0 z-50 bg-slate-950/70 p-4" (click)="closeOnOverlay($event)">
+      <div #dialog class="mx-auto mt-8 max-w-3xl rounded-2xl bg-white p-6 shadow-xl transition dark:bg-slate-900" role="dialog" aria-modal="true" [attr.aria-labelledby]="'modal-title-' + project.slug" [attr.aria-describedby]="'modal-desc-' + project.slug" tabindex="-1">
+        <div class="mb-4 flex items-start justify-between gap-4">
+          <div>
+            <p class="text-xs text-slate-500">{{ project.year }} · {{ project.company }}</p>
+            <h2 class="text-2xl font-semibold" [id]="'modal-title-' + project.slug">{{ project.title }}</h2>
+          </div>
+          <button type="button" class="rounded border px-2 py-1" aria-label="Close case study" (click)="close.emit()">✕</button>
+        </div>
+
+        <p class="text-sm text-slate-700 dark:text-slate-200" [id]="'modal-desc-' + project.slug">{{ project.summary }}</p>
+
+        <div class="mt-4 rounded-lg border border-slate-200 p-3 dark:border-slate-700">
+          <img [src]="project.screenshots[imageIndex]" [alt]="project.title + ' screenshot ' + (imageIndex + 1)" class="aspect-video w-full rounded object-cover" loading="lazy" decoding="async" width="1280" height="720" />
+          <div class="mt-2 flex justify-between">
+            <button type="button" class="rounded border px-2 py-1 text-sm" (click)="prevImage()">Prev</button>
+            <button type="button" class="rounded border px-2 py-1 text-sm" (click)="nextImage()">Next</button>
+          </div>
+        </div>
+
+        <h3 class="mt-5 text-sm font-semibold uppercase tracking-wide text-slate-500">Outcomes</h3>
+        <ul class="mt-2 list-disc space-y-1 pl-5 text-sm">
+          <li *ngFor="let outcome of project.outcomes">{{ outcome }}</li>
+        </ul>
+      </div>
+    </div>
+  

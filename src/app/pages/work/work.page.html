@@ -1,0 +1,16 @@
+    <section class="py-10">
+      <h1 class="text-3xl font-semibold">Case Studies</h1>
+      <p class="mt-2 max-w-3xl text-slate-600 dark:text-slate-300">Selected architecture work spanning governance, systems design, and product outcomes.</p>
+
+      <div class="mt-6 flex flex-wrap gap-2">
+        <button type="button" (click)="activeTag = 'All'" class="rounded-full border px-3 py-1 text-sm" [class.bg-slate-900]="activeTag==='All'" [class.text-white]="activeTag==='All'">All</button>
+        <button type="button" *ngFor="let tag of tags" (click)="activeTag = tag" class="rounded-full border px-3 py-1 text-sm" [class.bg-slate-900]="activeTag===tag" [class.text-white]="activeTag===tag">{{ tag }}</button>
+      </div>
+
+      <div class="mt-6 grid gap-4 md:grid-cols-2">
+        <app-project-card *ngFor="let project of filteredProjects" [project]="project" (open)="openProject($event)" />
+      </div>
+    </section>
+
+    <app-project-modal *ngIf="selectedProject" [project]="selectedProject" (close)="closeProject()" />
+  
