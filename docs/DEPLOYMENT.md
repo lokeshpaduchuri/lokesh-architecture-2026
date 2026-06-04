@@ -1,6 +1,6 @@
 # Deployment
 
-The site is a static Angular build suitable for S3 and CloudFront.
+The site is a static Angular build suitable for manual upload to S3, CloudFront-backed hosting, or another static host.
 
 ## Build
 
@@ -14,20 +14,21 @@ The production output is expected under:
 dist/lokesh-architecture-2026/browser
 ```
 
-## S3 and CloudFront
+## Manual Upload
 
-`package.json` includes a placeholder deployment command:
+This project does not store AWS credentials or include an automated AWS deploy script. Build the site locally:
 
 ```bash
-npm run deploy
+npm run build
 ```
 
-Before using it, replace:
+Then upload the contents of:
 
-- `YOUR_BUCKET_NAME`
-- `YOUR_DISTRIBUTION_ID`
+```text
+dist/lokesh-architecture-2026/browser
+```
 
-Confirm the CloudFront distribution serves `index.html` for Angular routes such as `/work`, `/resume`, `/about`, and `/contact`.
+If hosting behind CloudFront or another CDN, confirm the distribution serves `index.html` for Angular routes such as `/work`, `/resume`, `/about`, and `/contact`.
 
 ## Required Placeholders
 

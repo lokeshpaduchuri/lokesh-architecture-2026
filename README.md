@@ -11,7 +11,7 @@ Focused on *what I do* and *how I do it* — with modal-based case studies, stro
 - Work grid with **modal case studies** and deep-link support
 - Dark-first theme toggle with polished light mode and `localStorage` persistence
 - SEO fundamentals (per-route tags + JSON-LD)
-- Deployment-ready for S3 + CloudFront
+- Static build output suitable for manual hosting upload
 
 ## 🧱 Tech Stack
 - Angular 20
@@ -32,12 +32,10 @@ npm run build
 
 ## ☁️ Deploy
 ```bash
-npm run deploy
+npm run build
 ```
 
-Update placeholders in `package.json`:
-- `YOUR_BUCKET_NAME`
-- `YOUR_DISTRIBUTION_ID`
+Upload the generated `dist/lokesh-architecture-2026/browser` files to your hosting target manually.
 
 ## 📚 Docs
 - `docs/VISION.md`
