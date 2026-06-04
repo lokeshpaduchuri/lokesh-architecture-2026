@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
@@ -8,7 +9,8 @@ import {
   HostListener,
   Input,
   Output,
-  ViewChild
+  ViewChild,
+  inject
 } from '@angular/core';
 import { Project } from '../models/resume.models';
 
@@ -20,10 +22,12 @@ import { Project } from '../models/resume.models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectModalComponent implements AfterViewInit {
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
   @Input({ required: true }) project!: Project;
   @Output() modalClose = new EventEmitter<void>();
   @ViewChild('dialog') dialogRef?: ElementRef<HTMLElement>;
   imageIndex = 0;
+  copyStatus: 'idle' | 'copied' | 'failed' = 'idle';
 
   ngAfterViewInit(): void {
     this.dialogRef?.nativeElement.focus();
@@ -67,7 +71,41 @@ export class ProjectModalComponent implements AfterViewInit {
     this.imageIndex = (this.imageIndex + 1) % this.project.screenshots.length;
   }
 
-  copyLink(): void {
-    void navigator.clipboard?.writeText(window.location.href);
+  async copyLink(): Promise<void> {
+    const url = window.location.href;
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url);
+      } else if (!this.copyWithFallback(url)) {
+        throw new Error('Clipboard unavailable');
+      }
+
+      this.copyStatus = 'copied';
+      this.changeDetectorRef.markForCheck();
+      window.setTimeout(() => {
+        this.copyStatus = 'idle';
+        this.changeDetectorRef.markForCheck();
+      }, 1800);
+    } catch {
+      this.copyStatus = 'failed';
+      this.changeDetectorRef.markForCheck();
+    }
+  }
+
+  private copyWithFallback(value: string): boolean {
+    const textarea = document.createElement('textarea');
+    textarea.value = value;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+      return document.execCommand('copy');
+    } finally {
+      document.body.removeChild(textarea);
+    }
   }
 }
