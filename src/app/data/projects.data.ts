@@ -132,5 +132,57 @@ export const PROJECTS: Project[] = [
     links: [],
     displayOrder: 4,
     confidentialityNote: 'Public-safe summary. Internal workflows and repository details intentionally omitted.'
+  },
+  {
+    slug: 'legacy-react-to-angular-20',
+    title: 'From Legacy React SPA to Angular 20 Experience',
+    shortTitle: 'Legacy React to Angular 20',
+    yearLabel: 'Public Project',
+    domain: 'Personal Brand Platform',
+    category: 'Frontend Modernization',
+    summary:
+      'Modernized an aging React-based personal website into an Angular 20 resume-on-the-web experience designed for clarity, performance, accessibility, and architectural storytelling.',
+    architectureProblem:
+      'The existing website no longer reflected current frontend architecture leadership. It needed a modern framework foundation, scalable content architecture, stronger UX polish, accessibility improvements, and better SEO.',
+    challenge: [
+      'Replace an aging React SPA without carrying forward unnecessary complexity.',
+      'Create a portfolio experience that communicates Staff and Principal-level frontend architecture leadership.',
+      'Keep content reusable, public-safe, and easy to maintain.',
+      'Support fast static hosting through AWS S3 and CloudFront.'
+    ],
+    architectureDecision: [
+      'Rebuilt the website using Angular 20 standalone components and Angular Router.',
+      'Created typed content models for profile, experience, work, skills, and About content.',
+      'Added reusable UI primitives, modal-based case studies, dark/light theme persistence, SEO metadata, JSON-LD structured data, responsive layouts, and accessibility support.',
+      'Designed the deployment path for AWS S3 and CloudFront.'
+    ],
+    leadershipApproach: [
+      'Defined the content strategy, architecture principles, visual system, accessibility requirements, and deployment approach.',
+      'Used Codex as an AI-assisted implementation partner while keeping final architecture, UX, and content decisions human-owned.'
+    ],
+    outcomes: [
+      'Replaced a legacy React SPA with a modern Angular 20 architecture.',
+      'Created a reusable data-driven portfolio and case-study system.',
+      'Added persistent dark/light theme support.',
+      'Improved SEO foundations with route metadata and structured data.',
+      'Added accessible modal interactions and keyboard behavior.',
+      'Established a repeatable S3 and CloudFront deployment flow.'
+    ],
+    technologies: [
+      'Angular 20',
+      'TypeScript',
+      'Standalone Components',
+      'Angular Router',
+      'SEO Metadata',
+      'Schema.org JSON-LD',
+      'AWS S3',
+      'CloudFront',
+      'Codex'
+    ],
+    screenshots: ['/assets/images/projects/legacy-react-to-angular-20.svg'],
+    links: [],
+    featured: true,
+    displayOrder: 5,
+    confidentialityNote: 'Public project. Full implementation details may be shared selectively.'
   }
 ].sort((a, b) => a.displayOrder - b.displayOrder);
