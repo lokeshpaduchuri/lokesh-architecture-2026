@@ -179,7 +179,7 @@ export const PROJECTS: Project[] = [
       'CloudFront',
       'Codex'
     ],
-    screenshots: ['/assets/images/projects/legacy-react-to-angular-20.svg'],
+    screenshots: ['/assets/images/projects/legacy-react-to-angular-20.png'],
     links: [],
     featured: true,
     displayOrder: 5,
