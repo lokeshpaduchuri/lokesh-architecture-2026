@@ -19,7 +19,7 @@
 
     <div class="p-4 sm:p-6">
     <div class="mb-5">
-        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">{{ project.category }} · {{ project.domain }} · {{ project.yearLabel }}</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent">{{ metadataParts.join(' · ') }}</p>
         <h2 class="mt-2 text-2xl font-semibold text-slate-950 dark:text-slate-50" [id]="'modal-title-' + project.slug">{{ project.title }}</h2>
     </div>
 
