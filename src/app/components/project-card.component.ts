@@ -13,6 +13,12 @@ export class ProjectCardComponent {
   @Input({ required: true }) project!: Project;
   @Output() open = new EventEmitter<Project>();
 
+  get metadataParts(): string[] {
+    return [this.project.category, this.project.visibilityLabel, this.project.yearLabel].filter(
+      (part): part is string => Boolean(part)
+    );
+  }
+
   openFromKeyboard(event: KeyboardEvent): void {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();

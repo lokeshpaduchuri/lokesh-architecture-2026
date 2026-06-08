@@ -29,6 +29,12 @@ export class ProjectModalComponent implements AfterViewInit {
   imageIndex = 0;
   copyStatus: 'idle' | 'copied' | 'failed' = 'idle';
 
+  get metadataParts(): string[] {
+    return [this.project.category, this.project.visibilityLabel, this.project.yearLabel].filter(
+      (part): part is string => Boolean(part)
+    );
+  }
+
   ngAfterViewInit(): void {
     this.dialogRef?.nativeElement.focus();
   }

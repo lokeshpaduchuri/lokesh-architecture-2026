@@ -1,14 +1,17 @@
-export interface LinkItem {
+export interface ProjectLink {
   label: string;
   url: string;
   public?: boolean;
 }
 
+export type LinkItem = ProjectLink;
+
 export interface Project {
   slug: string;
   title: string;
   shortTitle: string;
-  yearLabel: string;
+  yearLabel?: string;
+  visibilityLabel: 'Confidential Case Study' | 'Public Project';
   domain: string;
   category: string;
   summary: string;
@@ -20,7 +23,7 @@ export interface Project {
   measurableImpact?: string;
   technologies: string[];
   screenshots: string[];
-  links: LinkItem[];
+  links: ProjectLink[];
   diagrams?: string[];
   featured?: boolean;
   displayOrder: number;
