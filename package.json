@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "npm run build -- --configuration=production && aws s3 sync ./dist/lokesh-architecture-2026/browser/ s3://lokeshpaduchuri.com --delete --exclude '.DS_Store' && aws cloudfront create-invalidation --distribution-id \"${CLOUDFRONT_DISTRIBUTION_ID:?Set CLOUDFRONT_DISTRIBUTION_ID}\" --paths \"/*\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
