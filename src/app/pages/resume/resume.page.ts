@@ -1,21 +1,26 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/seo.service';
 import { EDUCATION, EXPERIENCE } from '../../data/experience.data';
 import { CONTACT_LINKS, PROFILE } from '../../data/profile.data';
 import { CORE_STRENGTHS, SKILLS } from '../../data/skills.data';
 import { Experience } from '../../models/resume.models';
 import { ResumeRevealDirective } from './resume-reveal.directive';
+import { UiText } from '../../content/ui-text.enums';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, ResumeRevealDirective],
+  imports: [CommonModule, RouterLink, ResumeRevealDirective],
   templateUrl: 'resume.page.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResumePage {
+  readonly text = UiText;
   private readonly seo = inject(SeoService);
   readonly profile = PROFILE;
+  readonly introduction =
+    'I build Angular and TypeScript platforms, govern reusable component packages, and enable teams through quality standards and human-in-the-loop AI workflows. Earlier production React experience includes Atlas Air’s Crew Connect platform.';
   readonly experience = EXPERIENCE;
   readonly education = EDUCATION;
   readonly skills = SKILLS;
@@ -29,7 +34,7 @@ export class ResumePage {
       title: 'Resume | Lokesh Paduchuri',
       description:
         'Web-native resume for Lokesh Paduchuri, Principal UI/UX and Front-End Architect focused on platform architecture, design systems, accessibility, performance, and developer experience.',
-      canonicalPath: '/resume'
+      canonicalPath: '/resume',
     });
     this.seo.setJsonLd({
       '@context': 'https://schema.org',
@@ -38,8 +43,8 @@ export class ResumePage {
         '@type': 'Person',
         name: PROFILE.name,
         jobTitle: PROFILE.primaryTitle,
-        url: PROFILE.siteUrl
-      }
+        url: PROFILE.siteUrl,
+      },
     });
   }
 

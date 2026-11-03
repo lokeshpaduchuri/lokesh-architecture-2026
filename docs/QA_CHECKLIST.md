@@ -3,10 +3,10 @@
 ## Routes
 
 - Home renders hero, proof strip, approach, and first three featured case studies.
-- Work renders all public-safe case studies and category filters.
-- Resume renders sidebar, timeline, skills, education, and print actions.
+- Work renders four ordered case studies; Home features modernization, shared UI, and AI only.
+- Resume renders sidebar, timeline, skills, education, and related case-study links (no print/download buttons).
 - About renders narrative, principles, process, AI, and beyond-code sections.
-- Contact renders links and mailto fallback form states.
+- Contact renders LinkedIn/GitHub links, without publishing email or an inactive form.
 
 ## Theme
 
@@ -24,7 +24,9 @@
 - Overlay click closes the modal.
 - Close button has an accessible label.
 - Focus remains trapped inside the modal.
-- Copy link action copies the current URL when clipboard access is available.
+- Copy-link implementation remains in code but its UI is intentionally absent.
+- Retired performance-governance deep link opens modernization and its supporting quality section.
+- Public case study exposes website/repository links and an actual-site screenshot.
 - Browser back/forward reflects modal open/close state.
 
 ## Accessibility
@@ -65,3 +67,5 @@
 
 - `npm run lint`
 - `npm run build`
+- `npm run test:content` (eleven Node content/template/semantic/navigation guard tests)
+- Legacy `npm test -- --watch=false` currently cannot start: missing karma-jasmine. No Angular component test pass is claimed.
