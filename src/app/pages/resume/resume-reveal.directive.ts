@@ -1,17 +1,21 @@
-import { AfterViewInit, Directive, ElementRef, inject } from '@angular/core';
+import { AfterViewInit, DestroyRef, Directive, ElementRef, inject } from '@angular/core';
 
 @Directive({
   selector: '[appResumeReveal]',
-  standalone: true
+  standalone: true,
 })
 export class ResumeRevealDirective implements AfterViewInit {
   private readonly elementRef = inject(ElementRef<HTMLElement>);
+  private readonly destroyRef = inject(DestroyRef);
 
   ngAfterViewInit(): void {
     const element = this.elementRef.nativeElement;
     element.classList.add('resume-timeline-card');
 
-    if (!('IntersectionObserver' in window)) {
+    if (
+      !('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
       element.classList.add('is-visible');
       return;
     }
@@ -25,9 +29,10 @@ export class ResumeRevealDirective implements AfterViewInit {
           }
         }
       },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.14 }
+      { rootMargin: '0px 0px 40px 0px', threshold: 0 },
     );
 
     observer.observe(element);
+    this.destroyRef.onDestroy(() => observer.disconnect());
   }
 }

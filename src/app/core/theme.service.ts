@@ -10,8 +10,12 @@ export class ThemeService {
   readonly mode = signal<ThemeMode>('dark');
 
   initTheme(): void {
-    const saved = localStorage.getItem(this.storageKey) as ThemeMode | null;
-    const resolved: ThemeMode = saved ?? 'dark';
+    let resolved: ThemeMode = 'dark';
+    try {
+      if (localStorage.getItem(this.storageKey) === 'light') resolved = 'light';
+    } catch {
+      /* Keep the default theme when storage is unavailable. */
+    }
     this.applyTheme(resolved);
   }
 
@@ -24,6 +28,10 @@ export class ThemeService {
     root.classList.toggle('dark', mode === 'dark');
     root.style.colorScheme = mode;
     this.mode.set(mode);
-    localStorage.setItem(this.storageKey, mode);
+    try {
+      localStorage.setItem(this.storageKey, mode);
+    } catch {
+      /* Theme changes still work for the current page. */
+    }
   }
 }

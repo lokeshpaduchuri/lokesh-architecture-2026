@@ -13,7 +13,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/lokesh-architecture-2026",
-            "index": "src/index.html",
+            "index": { "input": ".generated/index.html", "output": "index.html" },
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",

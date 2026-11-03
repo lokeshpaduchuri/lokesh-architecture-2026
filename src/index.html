@@ -2,18 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Lokesh Paduchuri | Principal UI/UX & Front-End Architect</title>
+    <script>
+      // Apply the saved theme before the stylesheet and Angular render.
+      (() => {
+        let mode = 'dark';
+        try {
+          if (localStorage.getItem('lokesh-theme') === 'light') mode = 'light';
+        } catch {
+          /* Storage may be unavailable in private or restricted contexts. */
+        }
+        document.documentElement.classList.toggle('dark', mode === 'dark');
+        document.documentElement.style.colorScheme = mode;
+      })();
+    </script>
+    <title>@@SiteTitle@@</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Public-safe resume on the web for Lokesh Paduchuri, Principal UI/UX and Front-End Architect focused on frontend platform architecture, design systems, performance, accessibility, governance, and developer experience."
-    />
-    <meta property="og:title" content="Lokesh Paduchuri | Principal UI/UX & Front-End Architect" />
-    <meta
-      property="og:description"
-      content="Frontend architecture leadership across platform modernization, design systems, performance, accessibility, governance, and developer experience."
-    />
+    <meta name="description" content="@@SiteDescription@@" />
+    <meta property="og:title" content="@@SiteTitle@@" />
+    <meta property="og:description" content="@@SiteSocialDescription@@" />
     <meta property="og:image" content="/assets/images/og-default.svg" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />

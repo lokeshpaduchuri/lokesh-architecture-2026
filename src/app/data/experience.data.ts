@@ -2,7 +2,7 @@ import { Education, Experience } from '../models/resume.models';
 
 export const EXPERIENCE: Experience[] = [
   {
-    title: 'Principal Web Architect',
+    title: 'Principal UI/UX & Front End Architect',
     publicCompanyName: 'Independent Health Association',
     anonymizedCompanyName: 'Enterprise Healthcare Organization',
     usePublicCompanyName: true,
@@ -10,15 +10,33 @@ export const EXPERIENCE: Experience[] = [
     location: 'Buffalo, NY',
     current: true,
     publicSafeSummary:
-      'Own frontend architecture and hands-on technical direction across member-facing Angular and Ionic applications, translating complex product, UX, and integration requirements into scalable, maintainable frontend solutions.',
+      'Lead hands-on frontend architecture and implementation across Angular, TypeScript, Ionic, and Capacitor applications, combining platform modernization with reusable component engineering and team enablement.',
     highlights: [
-      'Defined a unified frontend architecture across web and mobile experiences, aligning 4+ cross-functional product teams on reusable patterns, implementation standards, upgrade strategy, and release consistency.',
-      'Improved frontend performance across key member-facing flows by introducing automated bundle budgets, targeted linting rules, and observability dashboards, reducing page-load latency by approximately 20%.',
-      'Expanded reusable UI engineering standards through Storybook, architecture decision records, and shared component guidance, improving design consistency, code review quality, and adoption of frontend best practices.',
-      'Partnered with product, UX, QA, backend, and DevOps teams to improve frontend testability, release readiness, accessibility, and maintainability earlier in the delivery lifecycle.',
-      'Introduced structured AI-assisted engineering workflows using GitHub Copilot and OpenAI Codex across research, planning, implementation support, code review, and validation.'
+      'Delivered 15 shared Angular/TypeScript components across three applications and three consuming teams, reducing duplicate implementations approximately 40%.',
+      'Completed the remaining AngularJS sunset by migrating 15 features affecting 20+ customer workflows across two engineering teams in approximately three months, with approximately 60% less migration effort.',
+      'Advanced the shared platform from Angular 16 to Angular 20 alongside Ionic and Capacitor upgrades, including replacement of deprecated native plugins.',
+      'Governed private npm packages across four teams and approximately 12 developers through Semantic Versioning, supported versions, Storybook contracts, and architecture approval.',
+      'Established WCAG 2.1 AA-aligned accessibility and automated quality guardrails, contributing to test coverage growth from approximately 30% to 70%.',
+      'Designed an AI-assisted engineering workflow adopted by approximately 15 developers across 5-6 initiatives per sprint, reducing engineering effort approximately 30% with human review gates.',
     ],
-    technologies: ['Angular', 'Ionic', 'TypeScript', 'Storybook', 'CI/CD', 'Accessibility', 'Web Performance', 'GitHub Copilot', 'OpenAI Codex']
+    caseStudies: [
+      { slug: 'frontend-platform-modernization', label: 'Platform modernization' },
+      { slug: 'design-system-governance', label: 'Shared UI platform' },
+      { slug: 'ai-assisted-engineering-workflows', label: 'AI-assisted engineering' },
+    ],
+    technologies: [
+      'Angular 20',
+      'TypeScript',
+      'Ionic',
+      'Capacitor',
+      'Private npm Packages',
+      'Storybook',
+      'WCAG 2.1 AA',
+      'Azure DevOps',
+      'Figma MCP',
+      'GitHub Copilot',
+      'Codex',
+    ],
   },
   {
     title: 'Lead Web Developer',
@@ -27,13 +45,20 @@ export const EXPERIENCE: Experience[] = [
     usePublicCompanyName: true,
     period: 'Jun 2022 - May 2024',
     location: 'Buffalo, NY',
-    publicSafeSummary: 'Built and modernized reusable Angular and TypeScript components for customer-facing workflows.',
+    publicSafeSummary:
+      'Built and modernized reusable Angular and TypeScript components for customer-facing workflows.',
     highlights: [
       'Improved maintainability and reduced duplicated implementation effort through reusable component work.',
       'Translated UX designs and business requirements into responsive, accessible frontend experiences.',
-      'Partnered with backend teams on API integration and edge-case handling.'
+      'Partnered with backend teams on API integration and edge-case handling.',
     ],
-    technologies: ['Angular', 'TypeScript', 'Reusable Components', 'Accessibility', 'API Integration']
+    technologies: [
+      'Angular',
+      'TypeScript',
+      'Reusable Components',
+      'Accessibility',
+      'API Integration',
+    ],
   },
   {
     title: 'Senior Web Developer',
@@ -42,13 +67,14 @@ export const EXPERIENCE: Experience[] = [
     usePublicCompanyName: true,
     period: 'Apr 2020 - Jun 2022',
     location: 'Buffalo, NY',
-    publicSafeSummary: 'Supported Angular modernization, telehealth UI integration, and frontend delivery improvements.',
+    publicSafeSummary:
+      'Supported Angular modernization, telehealth UI integration, and frontend delivery improvements.',
     highlights: [
-      'Migrated AngularJS modules to Angular, introducing micro-frontend-aligned module boundaries and scalable patterns.',
+      'Migrated AngularJS modules to Angular with clearer module boundaries and reusable patterns.',
       'Integrated real-time communication UI flows using CirrusMD APIs for telehealth features.',
-      'Strengthened CI/CD workflows with automated testing and frontend deployment improvements.'
+      'Strengthened CI/CD workflows with automated testing and frontend deployment improvements.',
     ],
-    technologies: ['AngularJS', 'Angular', 'TypeScript', 'Micro-frontend Readiness', 'CI/CD', 'CirrusMD APIs']
+    technologies: ['AngularJS', 'Angular', 'TypeScript', 'CI/CD', 'CirrusMD APIs'],
   },
   {
     title: 'Senior Web Developer',
@@ -59,10 +85,10 @@ export const EXPERIENCE: Experience[] = [
     location: 'Purchase, NY',
     publicSafeSummary: 'Delivered real-time frontend platform work for aviation operations.',
     highlights: [
-      'Architected and delivered the real-time Crew Connect platform using Angular and Firebase.',
-      'Reduced operational event latency from 10 minutes to 2 minutes and improved mission-critical communication reliability for global aviation teams.'
+      'Architected and delivered the React and TypeScript-based Crew Connect platform for aviation operations.',
+      'Reduced operational event latency from 10 minutes to 2 minutes and improved mission-critical communication reliability for global aviation teams.',
     ],
-    technologies: ['Angular', 'Firebase', 'Real-time UI', 'Operational Workflows']
+    technologies: ['React', 'TypeScript', 'Real-time UI', 'Operational Workflows'],
   },
   {
     title: 'Web Developer',
@@ -73,7 +99,7 @@ export const EXPERIENCE: Experience[] = [
     location: 'Syosset, NY',
     publicSafeSummary: 'Led Angular modernization work for enterprise frontend applications.',
     highlights: ['Led AngularJS to Angular migration improving build performance 15%.'],
-    technologies: ['AngularJS', 'Angular', 'Frontend Modernization', 'Build Performance']
+    technologies: ['AngularJS', 'Angular', 'Frontend Modernization', 'Build Performance'],
   },
   {
     title: 'Web Developer',
@@ -85,21 +111,26 @@ export const EXPERIENCE: Experience[] = [
     publicSafeSummary: 'Modernized payroll UI architecture in a regulated product environment.',
     highlights: [
       'Modernized payroll UI architecture, improving page load speed approximately 25% and reducing workflow errors approximately 20%.',
-      'Implemented secure, responsive UI patterns within a highly regulated environment.'
+      'Implemented secure, responsive UI patterns within a highly regulated environment.',
     ],
-    technologies: ['Frontend Architecture', 'Responsive UI', 'Performance Optimization', 'Regulated Workflows']
-  }
+    technologies: [
+      'Frontend Architecture',
+      'Responsive UI',
+      'Performance Optimization',
+      'Regulated Workflows',
+    ],
+  },
 ];
 
 export const EDUCATION: Education[] = [
   {
     degree: 'Master of Computer Science',
     institution: 'University of Texas at Arlington',
-    period: 'Date private'
+    period: 'Date private',
   },
   {
     degree: 'Bachelor of Computer Science',
     institution: 'JNT University, India',
-    period: 'Date private'
-  }
+    period: 'Date private',
+  },
 ];

@@ -1,42 +1,27 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { SeoService } from '../../core/seo.service';
-import { CONTACT_LINKS } from '../../data/profile.data';
+import { PROFILE } from '../../data/profile.data';
+import { UiText } from '../../content/ui-text.enums';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: 'contact.page.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactPage {
+  readonly text = UiText;
   private readonly seo = inject(SeoService);
-  readonly links = CONTACT_LINKS;
-  readonly form = {
-    name: '',
-    email: '',
-    message: ''
-  };
-  status: 'idle' | 'loading' | 'success' | 'error' = 'idle';
+  readonly profile = PROFILE;
 
   constructor() {
     this.seo.update({
       title: 'Contact | Lokesh Paduchuri',
       description:
         'Connect with Lokesh Paduchuri about Staff, Senior Staff, and Principal-level frontend architecture opportunities or platform strategy conversations.',
-      canonicalPath: '/contact'
+      canonicalPath: '/contact',
     });
-  }
-
-  submit(): void {
-    this.status = 'loading';
-
-    if (!this.form.name.trim() || !this.form.email.trim() || !this.form.message.trim()) {
-      this.status = 'error';
-      return;
-    }
-
-    this.status = 'error';
   }
 }

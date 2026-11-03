@@ -4,27 +4,72 @@
 
 :root {
   color-scheme: light dark;
-  --color-accent: #4d7c0f;
-  --color-accent-hover: #65a30d;
+  --color-accent: #466740;
+  --color-accent-hover: #354e31;
 }
 
 :root.dark {
-  --color-accent: #84cc16;
-  --color-accent-hover: #a3e635;
+  --color-accent: #afcfa7;
+  --color-accent-hover: #c7ddc2;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-300 dark:bg-[#020617] dark:text-slate-100;
+  @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100;
   font-family: Inter, 'Segoe UI', system-ui, sans-serif;
 }
 
 ::selection {
   background: var(--color-accent);
-  color: #0f172a;
+  color: var(--selection-text, white);
+}
+
+:root.dark {
+  --selection-text: #111512;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: 0;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400;
+}
+
+.primary-action {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-accent px-5 py-3 text-sm font-semibold text-white transition dark:text-slate-950;
+}
+
+.primary-action:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.secondary-action {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-slate-300 px-5 py-3 text-sm font-semibold transition hover:border-accent dark:border-slate-700;
+}
+
+.nav-link {
+  @apply relative flex min-h-11 items-center rounded-md px-3 text-sm text-slate-600 transition hover:text-slate-950 dark:text-slate-300 dark:hover:text-white;
+}
+
+.nav-link.is-active {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.nav-link.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: var(--color-accent);
 }
 
 a,
@@ -38,7 +83,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #84cc16;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
@@ -60,7 +105,9 @@ textarea:focus-visible {
 .section-enter {
   opacity: 0;
   transform: translateY(12px);
-  transition: opacity 400ms ease, transform 400ms ease;
+  transition:
+    opacity 400ms ease,
+    transform 400ms ease;
 }
 
 .section-enter.is-visible {
@@ -118,7 +165,12 @@ textarea:focus-visible {
 }
 
 .process-rail::before {
-  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--color-accent) 42%, transparent), transparent);
+  background: linear-gradient(
+    180deg,
+    transparent,
+    color-mix(in srgb, var(--color-accent) 42%, transparent),
+    transparent
+  );
   bottom: 0.875rem;
   content: '';
   left: 0.875rem;
@@ -218,6 +270,9 @@ textarea:focus-visible {
   *::after {
     box-shadow: none !important;
     text-shadow: none !important;
+    color: #111 !important;
+    background-color: transparent !important;
+    border-color: #d1d5db !important;
   }
 
   body {
@@ -249,6 +304,32 @@ textarea:focus-visible {
   .resume-mobile-header .no-print {
     display: none !important;
   }
+
+  .resume-mobile-header {
+    display: block !important;
+  }
+  .resume-expertise,
+  .resume-contact {
+    display: block !important;
+  }
+  .resume-sidebar {
+    display: none !important;
+  }
+  .resume-mobile-header .mobile-summary-clamp {
+    display: block;
+  }
+  .resume-timeline-card li.hidden {
+    display: list-item !important;
+  }
+  #expertise-list li.hidden {
+    display: list-item !important;
+  }
+  .resume-expertise button {
+    display: none !important;
+  }
+  .resume-timeline-card button {
+    display: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -263,6 +344,11 @@ textarea:focus-visible {
 
   .process-step {
     animation: none !important;
+  }
+
+  .section-enter {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   .resume-sidebar,

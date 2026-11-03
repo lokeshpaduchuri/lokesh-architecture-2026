@@ -15,14 +15,20 @@ export interface Project {
   domain: string;
   category: string;
   summary: string;
+  context: string;
   architectureProblem: string;
   challenge: string[];
   architectureDecision: string[];
+  architectureFlow?: string[];
   leadershipApproach: string[];
+  implementation: string[];
   outcomes: string[];
+  lessons: string[];
+  supportingSections?: Array<{ title: string; items: string[] }>;
   measurableImpact?: string;
   technologies: string[];
   screenshots: string[];
+  screenshotDescriptions?: string[];
   links: ProjectLink[];
   diagrams?: string[];
   featured?: boolean;
@@ -39,6 +45,7 @@ export interface Experience {
   location: string;
   publicSafeSummary?: string;
   highlights: string[];
+  caseStudies?: Array<{ slug: string; label: string }>;
   technologies: string[];
   current?: boolean;
 }
@@ -76,6 +83,5 @@ export interface AboutContent {
   supportingParagraph: string;
   principles: Array<{ title: string; body: string }>;
   process: string[];
-  ai: string;
   beyondCode: string;
 }

@@ -16,7 +16,7 @@ dist/lokesh-architecture-2026/browser
 
 ## Manual Upload
 
-This project does not store AWS credentials or include an automated AWS deploy script. Build the site locally:
+This project does not store AWS credentials. Manual upload remains supported. Build the site locally:
 
 ```bash
 npm run build
@@ -30,10 +30,16 @@ dist/lokesh-architecture-2026/browser
 
 If hosting behind CloudFront or another CDN, confirm the distribution serves `index.html` for Angular routes such as `/work`, `/resume`, `/about`, and `/contact`.
 
-## Required Placeholders
+## Scripted Deployment
+
+The existing `npm run deploy` script cleans browser output, builds with the production configuration, syncs the browser directory to `s3://lokeshpaduchuri.com` with `--delete`, then requests a CloudFront `/*` invalidation. Set `CLOUDFRONT_DISTRIBUTION_ID` and use an authenticated local AWS CLI profile. Distribution IDs are configuration, not credentials.
+
+This changes live hosting and removes remote objects absent from the build. Review the output directory and target bucket before running it. The content audit does not run deployment.
+
+## Editorial Verification
 
 Search for `TODO_CONFIRM` before production deployment. At minimum, confirm:
 
 - Any remaining screenshot, diagram, or external case-study link placeholders
-- Whether direct contact form delivery should be wired to a backend
+- Measurement methodology and personal retrospectives listed in CONTENT_AUDIT.md
 - Whether a downloadable resume should be added later; the current site intentionally has no download action
